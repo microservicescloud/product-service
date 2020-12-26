@@ -2,10 +2,10 @@ package com.cs.ps;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@Component
+@EnableDiscoveryClient
 public class ProductServiceApp {
 
     public static void main(String[] args) {

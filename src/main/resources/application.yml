@@ -1,0 +1,25 @@
+server:
+  port: 8100
+spring:
+  profiles:
+    active: "git"
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+---
+spring:
+  profiles: "git"
+  cloud:
+    config:
+      fail-fast: true
+      uri: http://localhost:8888
+---
+spring:
+  profiles: "native"
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVICE

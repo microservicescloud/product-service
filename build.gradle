@@ -1,6 +1,7 @@
 plugins {
     id "org.springframework.boot" version "2.3.3.RELEASE"
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
+    id 'io.freefair.lombok' version '5.0.0'
     id "java"
 }
 
@@ -9,13 +10,24 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
 }
-
+ext {
+    set('springCloudVersion', "Hoxton.SR1")
+}
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-devtools"
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
 test {

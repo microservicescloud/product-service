@@ -1,0 +1,9 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+spring:
+#  profiles:
+#    active: "git"
+  application:
+    name: product-service
